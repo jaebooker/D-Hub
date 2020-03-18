@@ -7,4 +7,8 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', (req, res) => res.render('pages/index'))
+  .post('/', (req, res) => {
+      // ipfs stuff
+    res.send(`Your story was successfully saved to the ipfs!`);
+   });
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
