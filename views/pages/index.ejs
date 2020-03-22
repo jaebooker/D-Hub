@@ -14,6 +14,7 @@
       <img src="/lang-logo.png">
     </a>
     <h1>D-Hub</h1>
+    <h3>Submit your story</h3>
     <p>Paste your story here to the Interplanetary File System, and it will exist permenantly online forever!</p>
     <form action="/">
         <label for="story">Title:</label><br>
@@ -22,6 +23,11 @@
         <input type="text" id="story" name="story"><br>
         <input type="submit" value="Submit">
     </form>
+    <h3>Other stories</h3>
+    <% for(var i=0; i<JSON.stringify(infuraData).length; i++) {%>
+        <p><%= infuraData[i].title %></p>
+        <br>
+    <% } %>
     <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-nodejs"><span class="glyphicon glyphicon-flash"></span> Getting Started on Heroku with Node.js</a>
     <a type="button" class="btn btn-lg btn-primary" href="https://github.com/heroku/node-js-getting-started"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
   </div>
