@@ -9,13 +9,13 @@ const {
 const box = await Box.openBox(myAddress, window.ethereum, {});
 const space = await box.openSpace('myApp');
 
-const BoxData = function getBoxData(name) {
+const BoxData = async (name) => {
     const hash = await space.public.get(name);
     const infuraData = await Infura.IPFSPortalGet.getObjectData(hash);
     return infuraData;
 };
 
-const AllBoxData = function getAllBoxData() {
+const AllBoxData = async => {
     const boxData = await space.public.all();
     let infuraDataArray;
     boxData.forEach(function(hash,index) {
@@ -25,11 +25,11 @@ const AllBoxData = function getAllBoxData() {
     return infuraDataArray;
 };
 
-const CreateBoxData = function setBoxData(name, object) {
+const CreateBoxData = async (name, object) => {
     const infuraData = await Infura.IPFSPortalPost(object);
     const hash = infuraData.Hash;
     const infuraHash = await box.public.set(name, hash);
     return infuraHash;
 };
 
-module.exports = BoxData, AllBoxData, CreateBoxData;
+module.exports = { BoxData, AllBoxData, CreateBoxData };
