@@ -11,7 +11,8 @@ express()
       infuraData = ThreeBox.BoxData.getAllBoxData();
       res.render('pages/index', infuraData)});
   .post('/', (req, res) => {
-    ThreeBox.CreateBoxData.setBoxData(req.title, req.story);
+    story = {"title": req.title, "story": req.story};
+    ThreeBox.CreateBoxData.setBoxData(req.title, story);
     res.send(`Your story was successfully saved to the ipfs!`);
    });
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
